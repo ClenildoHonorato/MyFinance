@@ -20,6 +20,10 @@
 
             if (dataTable != null && dataTable.Rows.Count > 0)
             {
+                Id = int.Parse(dataTable.Rows[0]["ID"].ToString());
+                Nome = dataTable.Rows[0]["NOME"].ToString();
+                Data_Nascimento = DateTime.Parse(dataTable.Rows[0]["DATA_NASCIMENTO"].ToString());
+
                 return true;
             }
             else
