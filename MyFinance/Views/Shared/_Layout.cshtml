@@ -25,6 +25,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    @using Microsoft.AspNetCore.Http;
+                    @inject IHttpContextAccessor HttpContextAccessor;
+
+                    <div style="color:#ffffff" id="NomeUsuarioLogado"></div>
                 </div>
             </div>
         </nav>
@@ -44,5 +48,18 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+    <script>
+        function CarregarUsuarioLogado() {
+            var nome = '@HttpContextAccessor.HttpContext.Session.GetString("NomeUsuarioLogado")';
+
+            if (nome != null)
+            {
+                var divNome = document.getElementById("NomeUsuarioLogado");
+                divNome.innerHTML = "Olá" + nome + "<a href='Usuario/Login/0'>(Sair)</a>";
+                divNome.style = "color: #ffffff; text-align: right; height:50px; padding-top: 13px;"
+            }
+
+        }
+    </script>
 </body>
 </html>

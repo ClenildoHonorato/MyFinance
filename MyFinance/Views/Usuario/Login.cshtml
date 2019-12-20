@@ -76,7 +76,7 @@
     @{
         try
         {
-            if (TempData["MensagemLoginInvalido"].ToString() != null)
+            if (TempData["MensagemLoginInvalido"] != null)
             {
                 <div class="alert alert-danger">
                     <strong>Atenção!</strong> @TempData["MensagemLoginInvalido"]

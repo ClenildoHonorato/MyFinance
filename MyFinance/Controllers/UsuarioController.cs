@@ -1,12 +1,20 @@
 ﻿namespace MyFinance.Controllers
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using MyFinance.Models;
 
     public class UsuarioController : Controller
     {
-        public IActionResult Login()
+        [HttpGet]
+        public IActionResult Login(int? id)
         {
+            if(id != null && id == 0)
+            {
+                HttpContext.Session.SetString("IdUsaruiLogado",string.Empty);
+                HttpContext.Session.SetString("NomeUsuarioLogado", string.Empty);
+            }
+
             return View();
         }
 
@@ -16,6 +24,8 @@
             bool login = usuario.ValidarLogin();
             if (login)
             {
+                HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);
+                HttpContext.Session.SetString("IdUsaruiLogado", usuario.Id.ToString());
                 return RedirectToAction("Index", "Home");
             }
             else
