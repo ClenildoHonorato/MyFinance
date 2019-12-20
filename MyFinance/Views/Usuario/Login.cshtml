@@ -74,20 +74,12 @@
 </head>
 <body>
     @{
-        try
-        {
-            if (TempData["MensagemLoginInvalido"].ToString() != null)
+            if (TempData["MensagemLoginInvalido"] != null)
             {
                 <div class="alert alert-danger">
                     <strong>Atenção!</strong> @TempData["MensagemLoginInvalido"]
                 </div>
             }
-        }
-        catch (Exception)
-        {
-
-            throw;
-        }
     }
 
     <div class="container login-container">

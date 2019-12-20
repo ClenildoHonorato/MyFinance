@@ -41,6 +41,7 @@ namespace MyFinance
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseMvc
 
             app.UseRouting();
 
