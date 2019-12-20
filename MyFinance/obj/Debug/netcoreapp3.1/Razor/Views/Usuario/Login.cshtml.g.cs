@@ -13,14 +13,14 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\Views\_ViewImports.cshtml"
+#line 1 "C:\Clenildo\C#\MyFinance\MyFinance\Views\_ViewImports.cshtml"
 using MyFinance;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\Views\_ViewImports.cshtml"
+#line 2 "C:\Clenildo\C#\MyFinance\MyFinance\Views\_ViewImports.cshtml"
 using MyFinance.Models;
 
 #line default
@@ -155,7 +155,7 @@ using MyFinance.Models;
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b55220cb597860118185b1f1a5578ca4e07003fd9219", async() => {
                 WriteLiteral("\r\n");
 #nullable restore
-#line 76 "E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\Views\Usuario\Login.cshtml"
+#line 76 "C:\Clenildo\C#\MyFinance\MyFinance\Views\Usuario\Login.cshtml"
       
             if (TempData["MensagemLoginInvalido"] != null)
             {
