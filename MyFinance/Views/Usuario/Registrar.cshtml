@@ -10,7 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style type="text/css">
         .login-container {
-            margin-top: 5%;
+            margin-top: 1%;
             margin-bottom: 5%;
         }
 
@@ -73,34 +73,34 @@
     </style>
 </head>
 <body>
-    @{
-            if (TempData["MensagemLoginInvalido"] != null)
-            {
-                <div class="alert alert-danger">
-                    <strong>Atenção!</strong> @TempData["MensagemLoginInvalido"]
-                </div>
-            }
-    }
     <div class="container login-container">
         <div class="row">
             <div class="col-md-6 login-form-2 offset-md-3">
-                <h3>Login for Form 1</h3>
-                <form asp-controller="Usuario" asp-action="ValidarLogin">
+                <h3>Registrar minha conta</h3>
+                <form asp-controller="Usuario" asp-action="Registrar">
+                    <div class="form-group">
+                        <input type="text" asp-for="Nome" class="form-control" placeholder="Nome *" value="" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <input type="text" asp-for="Email" class="form-control" placeholder="Email *" value="" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="password" asp-for="Senha" class="form-control" placeholder="Senha *" value="" />
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" class="btnSubmit" value="Login" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <a href="#" class="ForgetPwd">Esqueceu a Senha?</a>
+                        <input type="date" asp-for="Data_Nascimento" class="form-control" placeholder="Data de nascimento *" value="" />
+                        <span asp-validation-for="Data_Nascimento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" class="btnSubmit" value="Registrar" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
-</html>                                		                            
+</html>
+

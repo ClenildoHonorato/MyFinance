@@ -34,5 +34,21 @@
                 return RedirectToAction("Login");
             }
         }
+
+        [HttpPost]
+        public IActionResult Registrar(UsuarioModel usuario)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Registrar()
+        {
+            return View();
+        }
     }
 }
