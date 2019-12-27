@@ -26,7 +26,7 @@
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);
                 HttpContext.Session.SetString("IdUsaruiLogado", usuario.Id.ToString());
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Menu", "Home");
             }
             else
             {
@@ -40,13 +40,19 @@
         {
             if (ModelState.IsValid)
             {
-
+                usuario.RegistrarUsurio();
+                return RedirectToAction("Sucesso");
             }
             return View();
         }
 
         [HttpGet]
         public IActionResult Registrar()
+        {
+            return View();
+        }
+
+        public IActionResult Sucesso()
         {
             return View();
         }

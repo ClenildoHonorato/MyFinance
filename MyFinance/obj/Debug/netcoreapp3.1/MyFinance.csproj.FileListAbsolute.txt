@@ -238,3 +238,5 @@ E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Registrar.cshtml.g.cs
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\MyFinance.csprojAssemblyReference.cache
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Registrar.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Sucesso.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Home\Menu.cshtml.g.cs

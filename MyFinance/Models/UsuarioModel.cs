@@ -15,7 +15,7 @@
         [Required(ErrorMessage = "Informe sua Sanha!")]
         public string Senha { get; set; }
         [Required(ErrorMessage = "Informe sua Data de Nascimento!")]
-        public DateTime Data_Nascimento { get; set; }
+        public string Data_Nascimento { get; set; }
 
         public bool ValidarLogin()
         {
@@ -27,7 +27,7 @@
             {
                 Id = int.Parse(dataTable.Rows[0]["ID"].ToString());
                 Nome = dataTable.Rows[0]["NOME"].ToString();
-                Data_Nascimento = DateTime.Parse(dataTable.Rows[0]["DATA_NASCIMENTO"].ToString());
+                Data_Nascimento = dataTable.Rows[0]["DATA_NASCIMENTO"].ToString();
 
                 return true;
             }
@@ -36,6 +36,13 @@
                 return false;
             }
 
+        }
+
+        public void RegistrarUsurio()
+        {
+            string sql = $"INSERT INTO usuario (NOME, EMAIL, SENHA, DATA_NASCIMENTO) VALUES('{Nome}','{Email}','{Senha}','{Data_Nascimento}')";
+            DAL objDal = new DAL();
+            objDal.ExecutarComandoSql(sql);
         }
     }
 }

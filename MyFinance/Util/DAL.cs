@@ -9,7 +9,7 @@
         private static string database = "financeiro";
         private static string user = "root";
         private static string password = "";
-        private string connectionString = $"Server={server}; Database={database}; Uid={user}; Pwd={password}";
+        private string connectionString = $"Server={server}; Database={database}; Uid={user}; Pwd={password}; convert zero datetime=True";
         private MySqlConnection connection;
 
         public DAL()
