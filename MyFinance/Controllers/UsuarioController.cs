@@ -25,7 +25,7 @@
             if (login)
             {
                 HttpContext.Session.SetString("NomeUsuarioLogado", usuario.Nome);
-                HttpContext.Session.SetString("IdUsaruiLogado", usuario.Id.ToString());
+                HttpContext.Session.SetString("IdUsuarioLogado", usuario.Id.ToString());
                 return RedirectToAction("Menu", "Home");
             }
             else
