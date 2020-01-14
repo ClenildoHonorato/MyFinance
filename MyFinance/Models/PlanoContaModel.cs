@@ -49,11 +49,11 @@
             return lista;
         }
 
-        public PlanoContaModel CarregarRegistro(int? id)
+        public PlanoContaModel CarregarRegistro(int? id, string usuarioLogado)
         {
             PlanoContaModel item = new PlanoContaModel();
 
-            string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+            //string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
             string sql = $"SELECT Id, Usuario_Id, Descricao, Tipo FROM plano_contas where Usuario_Id = {usuarioLogado} AND Id = {id}";
             DAL objDAL = new DAL();
             DataTable dataTable = objDAL.RetDataTable(sql);
@@ -68,7 +68,16 @@
 
         public void InsertUpdate(string usuarioLogado)
         {
-            string sql = $"INSERT INTO plano_contas (Descricao, Tipo, Usuario_Id) VALUES ('{Descricao}','{Tipo}','{usuarioLogado}')";
+            string sql = "";
+
+            if (Id != 0)
+            {
+                sql = $"UPDATE plano_contas SET Descricao = '{Descricao}', Tipo = '{Tipo}' WHERE Usuario_Id = '{usuarioLogado}' AND Id = '{Id}'";
+            }
+            else
+            {
+                sql = $"INSERT INTO plano_contas (Descricao, Tipo, Usuario_Id) VALUES ('{Descricao}','{Tipo}','{usuarioLogado}')";
+            }
             DAL objDAL = new DAL();
             objDAL.ExecutarComandoSql(sql);
         }

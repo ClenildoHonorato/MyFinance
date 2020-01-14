@@ -40,8 +40,9 @@ namespace MyFinance.Controllers
         {
             if (id != null)
             {
+                string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsaruiLogado");
                 PlanoContaModel planoContaModel = new PlanoContaModel(HttpContextAccessor);
-                ViewBag.Registro = planoContaModel.CarregarRegistro(id);
+                ViewBag.Registro = planoContaModel.CarregarRegistro(id,usuarioLogado);
             }
             return View();
         }

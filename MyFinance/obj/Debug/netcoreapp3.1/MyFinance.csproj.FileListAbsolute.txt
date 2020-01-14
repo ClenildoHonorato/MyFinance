@@ -250,3 +250,11 @@ C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Dashboard.cshtml.g.cs
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Conta\CriarConta.cshtml.g.cs
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\PlanoConta\CriarPlanoConta.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Ajuda\Index.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Conta\CriarConta.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Conta\Index.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\PlanoConta\CriarPlanoConta.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\PlanoConta\Index.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Dashboard.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Extrato.cshtml.g.cs
+E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Index.cshtml.g.cs
