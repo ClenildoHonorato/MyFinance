@@ -89,3 +89,16 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+SELECT * FROM financeiro.transacao;
+
+alter table financeiro.transacao add column Usuario_Id int references usuario(id);
+
+SELECT t.Id, t.Data ,t.Tipo, t.Valor, t.Descricao as historico,t.Conta_Id, c.Nome as conta, t.Plano_Contas_Id, p.Descricao as plano_conta
+                          FROM transacao as t
+                          inner join conta c on t.Conta_Id = c.Id
+                          inner join plano_contas as p
+                          on t.Plano_Contas_Id = p.Id
+                          where Usuario_Id = 1 order by t.data desc limit 10;
+
