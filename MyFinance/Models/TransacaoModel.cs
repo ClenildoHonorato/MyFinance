@@ -17,6 +17,9 @@ namespace MyFinance.Models
         public string Descricao { get; set; }
         public int Conta_Id { get; set; }
         public int Plano_Contas_Id { get; set; }
+        public string NomeConta { get; set; }
+        public string DescricaoPlano { get; set; }
+
 
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
@@ -39,7 +42,7 @@ namespace MyFinance.Models
             string sql = "SELECT t.Id, t.Data,t.Tipo, t.Valor, t.Descricao as historico,t.Conta_Id, " +
                           "c.Nome as conta, t.Plano_Contas_Id, p.Descricao as plano_conta " +
                           "FROM transacao as t inner join conta c on t.Conta_Id = c.Id inner join plano_contas as p " +
-                          $"on t.Plano_Contas_Id = p.Id where Usuario_Id = {usuarioLogado} order by t.data desc limit 10";
+                          $"on t.Plano_Contas_Id = p.Id where t.Usuario_Id = {usuarioLogado} order by t.data desc limit 10";
 
             DAL objDAL = new DAL();
             DataTable dataTable = objDAL.RetDataTable(sql);
@@ -51,9 +54,11 @@ namespace MyFinance.Models
                 item.Data = DateTime.Parse(dataTable.Rows[i]["Data"].ToString()).ToString("dd/MM/yyyy");
                 item.Tipo = Convert.ToBoolean(dataTable.Rows[i]["Tipo"].ToString());
                 item.Valor = Decimal.Parse(dataTable.Rows[i]["Valor"].ToString());
-                item.Descricao = dataTable.Rows[i]["Descricao"].ToString();
+                item.Descricao = dataTable.Rows[i]["historico"].ToString();
                 item.Conta_Id = int.Parse(dataTable.Rows[i]["Conta_Id"].ToString());
+                item.NomeConta = dataTable.Rows[i]["conta"].ToString();
                 item.Plano_Contas_Id = int.Parse(dataTable.Rows[i]["Plano_Contas_Id"].ToString());
+                item.DescricaoPlano = dataTable.Rows[i]["plano_conta"].ToString();
                 lista.Add(item);
             }
 

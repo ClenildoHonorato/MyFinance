@@ -7378,23 +7378,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BG_NOT\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ClenildoHonoratoPere\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CLENILDO\\01-CURSOS E PROJETOS\\C#\\MyFinance\\MyFinance\\MyFinance.csproj",
+      "projectUniqueName": "C:\\Clenildo\\C#\\MyFinance\\MyFinance\\MyFinance.csproj",
       "projectName": "MyFinance",
-      "projectPath": "E:\\CLENILDO\\01-CURSOS E PROJETOS\\C#\\MyFinance\\MyFinance\\MyFinance.csproj",
-      "packagesPath": "C:\\Users\\BG_NOT\\.nuget\\packages\\",
-      "outputPath": "E:\\CLENILDO\\01-CURSOS E PROJETOS\\C#\\MyFinance\\MyFinance\\obj\\",
+      "projectPath": "C:\\Clenildo\\C#\\MyFinance\\MyFinance\\MyFinance.csproj",
+      "packagesPath": "C:\\Users\\ClenildoHonoratoPere\\.nuget\\packages\\",
+      "outputPath": "C:\\Clenildo\\C#\\MyFinance\\MyFinance\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\BG_NOT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ClenildoHonoratoPere\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
