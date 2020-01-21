@@ -12,7 +12,7 @@ namespace MyFinance.Models
     {
         public int Id { get; set; }
         public string Data { get; set; }
-        public bool Tipo { get; set; }
+        public string Tipo { get; set; }
         public decimal Valor { get; set; }
         public string Descricao { get; set; }
         public int Conta_Id { get; set; }
@@ -33,7 +33,7 @@ namespace MyFinance.Models
             HttpContextAccessor = httpContextAccessor;
         }
 
-        public List<TransacaoModel> ListaPLanoConta()
+        public List<TransacaoModel> ListaTransacao()
         {
             List<TransacaoModel> lista = new List<TransacaoModel>();
             TransacaoModel item;
@@ -52,7 +52,7 @@ namespace MyFinance.Models
                 item = new TransacaoModel();
                 item.Id = int.Parse(dataTable.Rows[i]["Id"].ToString());
                 item.Data = DateTime.Parse(dataTable.Rows[i]["Data"].ToString()).ToString("dd/MM/yyyy");
-                item.Tipo = Convert.ToBoolean(dataTable.Rows[i]["Tipo"].ToString());
+                item.Tipo = dataTable.Rows[i]["Tipo"].ToString();
                 item.Valor = Decimal.Parse(dataTable.Rows[i]["Valor"].ToString());
                 item.Descricao = dataTable.Rows[i]["historico"].ToString();
                 item.Conta_Id = int.Parse(dataTable.Rows[i]["Conta_Id"].ToString());
@@ -80,6 +80,7 @@ namespace MyFinance.Models
             DAL objDAL = new DAL();
             objDAL.ExecutarComandoSql(sql);
         }
+
 
         public void ExcluirConta(string id)
         {

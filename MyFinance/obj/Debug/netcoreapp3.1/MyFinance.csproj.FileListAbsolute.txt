@@ -258,3 +258,4 @@ E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Dashboard.cshtml.g.cs
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Extrato.cshtml.g.cs
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Index.cshtml.g.cs
+C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Registrar.cshtml.g.cs
