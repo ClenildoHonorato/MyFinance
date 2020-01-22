@@ -1,29 +1,34 @@
 ﻿@model TransacaoModel
 <h3>Registrar Transações</h3>
 
-@{ 
+@{
     var vData = "";
     var vDescricao = "";
     var vTipo = "";
     var vId = 0;
-    var vValor = "";
+    var vValor = 0.00;
+    var vContaId = 0;
+    var VPlanoContaId = 0;
 
     try
     {
         vId = int.Parse(ViewBag.Registro.Id.ToString());
-        vData = ViewBag.Registro.Data.ToString();
+        vData = DateTime.Parse(ViewBag.Registro.Data.ToString()).ToString("yyyy-MM-dd");
         vDescricao = ViewBag.Registro.Descricao.ToString();
         vTipo = ViewBag.Registro.Tipo.ToString();
-        vValor = ViewBag.Registro.ViewBag.Registro.Valor.ToString();
+        vValor = double.Parse(ViewBag.Registro.Valor.ToString());
+        vContaId = int.Parse(ViewBag.Registro.Conta_Id.ToString());
+        VPlanoContaId = int.Parse(ViewBag.Registro.Plano_Contas_Id.ToString());
     }
     catch { }
 }
 
-<form asp-controller="PlanoConta" asp-action="CriarPlanoConta">
+<form asp-controller="Transacao" asp-action="Registrar">
     <input type="hidden" asp-for="Id" value="@vId" />
     <div class="form-group">
         <label>Data:</label>
         <input type="date" class="form-control" asp-for="Data" value="@vData" />
+        <date-util format="dd/MM/yyyy"></date-util>
         <span asp-validation-for="Data" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -48,7 +53,7 @@
     </div>
     <div class="form-group">
         <label>Histórico:</label>
-        <textarea rows="5" class="form-control" asp-for="Descricao">@vDescricao</textarea>
+        @Html.TextArea("Descricao", vDescricao, new { @class = "form-control" })
         <span asp-validation-for="Descricao" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -57,7 +62,14 @@
             @{
                 foreach (var item in (List<ContaModel>)ViewBag.ListaConta)
                 {
-                    <option value="@item.Id.ToString()">@item.Nome.ToString()</option>
+                    if (item.Id.ToString() == vContaId.ToString())
+                    {
+                        <option selected value="@item.Id.ToString()">@item.Nome.ToString()</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id.ToString()">@item.Nome.ToString()</option>
+                    }
                 }
             }
         </select>
@@ -66,9 +78,16 @@
         <label>Plano de Contas:</label>
         <select asp-for="Plano_Contas_Id">
             @{
-                foreach (var item in (List<ContaModel>)ViewBag.ListaPlanoConta)
+                foreach (var item in (List<PlanoContaModel>)ViewBag.ListaPlanoConta)
                 {
-                    <option value="@item.Id.ToString()">@item.Nome.ToString()</option>
+                    if (item.Id.ToString() == VPlanoContaId.ToString())
+                    {
+                        <option selected value="@item.Id.ToString()">@item.Descricao.ToString()</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id.ToString()">@item.Descricao.ToString()</option>
+                    }
                 }
             }
         </select>

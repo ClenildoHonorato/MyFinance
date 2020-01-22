@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
-using MyFinance.Util;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyFinance.Models
+﻿namespace MyFinance.Models
 {
+    using Microsoft.AspNetCore.Http;
+    using MyFinance.Util;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Data;
+
     public class TransacaoModel
     {
         public int Id { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public string Data { get; set; }
         public string Tipo { get; set; }
         public decimal Valor { get; set; }
@@ -71,14 +72,43 @@ namespace MyFinance.Models
 
             if (Id != 0)
             {
-                sql = $"UPDATE transacao SET Data='{Data}', Tipo = '{Tipo}', Valor = '{Valor}', Descricao = '{Descricao}' WHERE Usuario_Id = '{usuarioLogado}' AND Id = '{Id}'";
+                sql = $"UPDATE transacao SET Data='{DateTime.Parse(Data).ToString("yyyy/MM/dd")}', Tipo = '{Tipo}', Valor = '{Valor}', Descricao = '{Descricao}' WHERE Usuario_Id = '{usuarioLogado}' AND Id = '{Id}'";
             }
             else
             {
-                sql = $"INSERT INTO transacao (Data, Tipo, Valor, Descricao, Conta_Id, Plano_Contas_Id) VALUES ('{Data}','{Tipo}','{Valor}','{Descricao}','{Conta_Id}','{Plano_Contas_Id}')";
+                sql = $"INSERT INTO transacao (Data, Tipo, Valor, Descricao, Conta_Id, Plano_Contas_Id, Usuario_Id) VALUES ('{DateTime.Parse(Data).ToString("yyyy/MM/dd")}','{Tipo}','{Valor}','{Descricao}','{Conta_Id}','{Plano_Contas_Id}',{usuarioLogado})";
             }
             DAL objDAL = new DAL();
             objDAL.ExecutarComandoSql(sql);
+        }
+
+        public TransacaoModel CarregarRegistro(int? id, string usuarioLogado)
+        {
+           
+           TransacaoModel item;
+
+            string sql = "SELECT t.Id, t.Data,t.Tipo, t.Valor, t.Descricao as historico,t.Conta_Id, " +
+                          "c.Nome as conta, t.Plano_Contas_Id, p.Descricao as plano_conta " +
+                          "FROM transacao as t inner join conta c on t.Conta_Id = c.Id inner join plano_contas as p " +
+                          $"on t.Plano_Contas_Id = p.Id where t.Usuario_Id = {usuarioLogado} AND t.Id = {id} order by t.data desc limit 10";
+
+            DAL objDAL = new DAL();
+            DataTable dataTable = objDAL.RetDataTable(sql);
+
+           
+                item = new TransacaoModel();
+                item.Id = int.Parse(dataTable.Rows[0]["Id"].ToString());
+                item.Data = DateTime.Parse(dataTable.Rows[0]["Data"].ToString()).ToString("dd/MM/yyyy");
+                item.Tipo = dataTable.Rows[0]["Tipo"].ToString();
+                item.Valor = Decimal.Parse(dataTable.Rows[0]["Valor"].ToString());
+                item.Descricao = dataTable.Rows[0]["historico"].ToString();
+                item.Conta_Id = int.Parse(dataTable.Rows[0]["Conta_Id"].ToString());
+                item.NomeConta = dataTable.Rows[0]["conta"].ToString();
+                item.Plano_Contas_Id = int.Parse(dataTable.Rows[0]["Plano_Contas_Id"].ToString());
+                item.DescricaoPlano = dataTable.Rows[0]["plano_conta"].ToString();
+             
+          
+            return item;
         }
 
 

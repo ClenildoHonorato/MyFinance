@@ -36,10 +36,12 @@
             if (id != null)
             {
                 string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsaruiLogado");
-                PlanoContaModel planoContaModel = new PlanoContaModel(HttpContextAccessor);
-                ViewBag.Registro = planoContaModel.CarregarRegistro(id, usuarioLogado);
+                TransacaoModel transacaoModel = new TransacaoModel(HttpContextAccessor);
+                ViewBag.Registro = transacaoModel.CarregarRegistro(id, usuarioLogado);
             }
 
+            ViewBag.ListaPlanoConta = new PlanoContaModel(HttpContextAccessor).ListaPLanoConta();
+            ViewBag.ListaConta = new ContaModel(HttpContextAccessor).ListaConta();
             ViewBag.ListaTransacao = new TransacaoModel(HttpContextAccessor).ListaTransacao();
 
             return View();
