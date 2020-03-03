@@ -10,9 +10,8 @@
     public class TransacaoModel
     {
         public int Id { get; set; }
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public string Data { get; set; }
+        public string DataFinal { get; set; }
         public string Tipo { get; set; }
         public decimal Valor { get; set; }
         public string Descricao { get; set; }
@@ -52,7 +51,7 @@
             {
                 item = new TransacaoModel();
                 item.Id = int.Parse(dataTable.Rows[i]["Id"].ToString());
-                item.Data = DateTime.Parse(dataTable.Rows[i]["Data"].ToString()).ToString("dd/MM/yyyy");
+                item.Data = dataTable.Rows[i]["Data"].ToString();
                 item.Tipo = dataTable.Rows[i]["Tipo"].ToString();
                 item.Valor = Decimal.Parse(dataTable.Rows[i]["Valor"].ToString());
                 item.Descricao = dataTable.Rows[i]["historico"].ToString();
@@ -72,11 +71,11 @@
 
             if (Id != 0)
             {
-                sql = $"UPDATE transacao SET Data='{DateTime.Parse(Data).ToString("yyyy/MM/dd")}', Tipo = '{Tipo}', Valor = '{Valor}', Descricao = '{Descricao}' WHERE Usuario_Id = '{usuarioLogado}' AND Id = '{Id}'";
+                sql = $"UPDATE transacao SET Data='{Data}', Tipo = '{Tipo}', Valor = '{Valor}', Descricao = '{Descricao}' WHERE Usuario_Id = '{usuarioLogado}' AND Id = '{Id}'";
             }
             else
             {
-                sql = $"INSERT INTO transacao (Data, Tipo, Valor, Descricao, Conta_Id, Plano_Contas_Id, Usuario_Id) VALUES ('{DateTime.Parse(Data).ToString("yyyy/MM/dd")}','{Tipo}','{Valor}','{Descricao}','{Conta_Id}','{Plano_Contas_Id}',{usuarioLogado})";
+                sql = $"INSERT INTO transacao (Data, Tipo, Valor, Descricao, Conta_Id, Plano_Contas_Id, Usuario_Id) VALUES ('{Data}','{Tipo}','{Valor}','{Descricao}','{Conta_Id}','{Plano_Contas_Id}',{usuarioLogado})";
             }
             DAL objDAL = new DAL();
             objDAL.ExecutarComandoSql(sql);
@@ -84,8 +83,8 @@
 
         public TransacaoModel CarregarRegistro(int? id, string usuarioLogado)
         {
-           
-           TransacaoModel item;
+
+            TransacaoModel transacaoModel;
 
             string sql = "SELECT t.Id, t.Data,t.Tipo, t.Valor, t.Descricao as historico,t.Conta_Id, " +
                           "c.Nome as conta, t.Plano_Contas_Id, p.Descricao as plano_conta " +
@@ -95,24 +94,24 @@
             DAL objDAL = new DAL();
             DataTable dataTable = objDAL.RetDataTable(sql);
 
-           
-                item = new TransacaoModel();
-                item.Id = int.Parse(dataTable.Rows[0]["Id"].ToString());
-                item.Data = DateTime.Parse(dataTable.Rows[0]["Data"].ToString()).ToString("dd/MM/yyyy");
-                item.Tipo = dataTable.Rows[0]["Tipo"].ToString();
-                item.Valor = Decimal.Parse(dataTable.Rows[0]["Valor"].ToString());
-                item.Descricao = dataTable.Rows[0]["historico"].ToString();
-                item.Conta_Id = int.Parse(dataTable.Rows[0]["Conta_Id"].ToString());
-                item.NomeConta = dataTable.Rows[0]["conta"].ToString();
-                item.Plano_Contas_Id = int.Parse(dataTable.Rows[0]["Plano_Contas_Id"].ToString());
-                item.DescricaoPlano = dataTable.Rows[0]["plano_conta"].ToString();
-             
-          
-            return item;
+
+            transacaoModel = new TransacaoModel();
+            transacaoModel.Id = int.Parse(dataTable.Rows[0]["Id"].ToString());
+            transacaoModel.Data = dataTable.Rows[0]["Data"].ToString();
+            transacaoModel.Tipo = dataTable.Rows[0]["Tipo"].ToString();
+            transacaoModel.Valor = Decimal.Parse(dataTable.Rows[0]["Valor"].ToString());
+            transacaoModel.Descricao = dataTable.Rows[0]["historico"].ToString();
+            transacaoModel.Conta_Id = int.Parse(dataTable.Rows[0]["Conta_Id"].ToString());
+            transacaoModel.NomeConta = dataTable.Rows[0]["conta"].ToString();
+            transacaoModel.Plano_Contas_Id = int.Parse(dataTable.Rows[0]["Plano_Contas_Id"].ToString());
+            transacaoModel.DescricaoPlano = dataTable.Rows[0]["plano_conta"].ToString();
+
+
+            return transacaoModel;
         }
 
 
-        public void ExcluirConta(string id)
+        public void Excluir(string id)
         {
             string sql = "DELETE FROM transacao WHERE Id = " + id;
             DAL objDAL = new DAL();

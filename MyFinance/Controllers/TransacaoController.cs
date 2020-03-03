@@ -42,13 +42,33 @@
 
             ViewBag.ListaPlanoConta = new PlanoContaModel(HttpContextAccessor).ListaPLanoConta();
             ViewBag.ListaConta = new ContaModel(HttpContextAccessor).ListaConta();
-            ViewBag.ListaTransacao = new TransacaoModel(HttpContextAccessor).ListaTransacao();
+ 
+            return View();
+        }
+
+        public IActionResult ExcluirTransacao(int id)
+        {
+            string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsaruiLogado");
+            TransacaoModel transacaoModel = new TransacaoModel(HttpContextAccessor);
+            ViewBag.Registro = transacaoModel.CarregarRegistro(id, usuarioLogado);
 
             return View();
         }
 
-        public IActionResult Extrato()
+        public IActionResult Excluir(string id)
         {
+            TransacaoModel transacaoModel = new TransacaoModel(HttpContextAccessor);
+            transacaoModel.Excluir(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Extrato(TransacaoModel transacaoModel)
+        {
+            transacaoModel.HttpContextAccessor = HttpContextAccessor;
+            ViewBag.ListaTransacao = transacaoModel.ListaTransacao();
+            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
             return View();
         }
 
