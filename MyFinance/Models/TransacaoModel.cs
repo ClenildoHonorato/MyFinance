@@ -38,11 +38,25 @@
             List<TransacaoModel> lista = new List<TransacaoModel>();
             TransacaoModel item;
 
+            //Utilizado pela View Extrato
+            string filtro = "";
+            if((Data != null) && (DataFinal != null))
+                filtro += $" and t.Data >= '{DateTime.Parse(Data).ToString("yyyy/MM/dd")}' and t.Data <= '{DateTime.Parse(DataFinal).ToString("yyyy/MM/dd")}'";
+
+            if (Tipo != null && Tipo != "A")
+                filtro += $" and t.Tipo ='{Tipo}'";
+
+            if (Conta_Id != 0)
+            {
+                filtro += $" and t.Conta_Id = '{Conta_Id}' ";
+            }
+            //Fim
+
             string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsaruiLogado");
             string sql = "SELECT t.Id, t.Data,t.Tipo, t.Valor, t.Descricao as historico,t.Conta_Id, " +
                           "c.Nome as conta, t.Plano_Contas_Id, p.Descricao as plano_conta " +
                           "FROM transacao as t inner join conta c on t.Conta_Id = c.Id inner join plano_contas as p " +
-                          $"on t.Plano_Contas_Id = p.Id where t.Usuario_Id = {usuarioLogado} order by t.data desc limit 10";
+                          $"on t.Plano_Contas_Id = p.Id where t.Usuario_Id = {usuarioLogado} {filtro} order by t.data desc limit 10";
 
             DAL objDAL = new DAL();
             DataTable dataTable = objDAL.RetDataTable(sql);
