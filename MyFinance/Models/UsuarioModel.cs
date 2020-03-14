@@ -8,12 +8,17 @@
     public class UsuarioModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage ="Informe seu Nome!")]
+        [Required(ErrorMessage = "Informe seu Nome!")]
         public string Nome { get; set; }
+
         [Required(ErrorMessage = "Informe seu Email!")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "O e-mail informado é inválido!")]
         public string Email { get; set; }
+
         [Required(ErrorMessage = "Informe sua Sanha!")]
         public string Senha { get; set; }
+
         [Required(ErrorMessage = "Informe sua Data de Nascimento!")]
         public string Data_Nascimento { get; set; }
 

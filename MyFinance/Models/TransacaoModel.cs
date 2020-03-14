@@ -139,13 +139,13 @@
         public double Total { get; set; }
         public string PlanoConta { get; set; }
 
-        public List<Dashboard> RetornarGraficoPie()
+        public List<Dashboard> RetornarGraficoPie(int usuarioLogado)
         {
             List<Dashboard> lista = new List<Dashboard>();
             Dashboard item;
 
             string sql = "select sum(t.valor) as total, p.Descricao from transacao as t inner join plano_contas as p " +
-                         "on t.Plano_Contas_Id = p.Id where t.Tipo = 'D' group by p.Descricao";
+                         $"on t.Plano_Contas_Id = p.Id where t.Tipo = 'D' and t.Usuario_Id = {usuarioLogado} group by p.Descricao";
 
             DAL objDAL = new DAL();
             DataTable dt = new DataTable();

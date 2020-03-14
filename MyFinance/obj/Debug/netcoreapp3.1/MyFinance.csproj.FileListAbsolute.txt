@@ -260,3 +260,4 @@ E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\
 E:\CLENILDO\01-CURSOS E PROJETOS\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Index.cshtml.g.cs
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\Registrar.cshtml.g.cs
 C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Transacao\ExcluirTransacao.cshtml.g.cs
+C:\Clenildo\C#\MyFinance\MyFinance\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs

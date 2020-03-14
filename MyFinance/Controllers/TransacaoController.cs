@@ -76,7 +76,8 @@
 
         public IActionResult Dashboard()
         {
-            List<Dashboard> lista = new Dashboard().RetornarGraficoPie();
+            string usuarioLogado = HttpContextAccessor.HttpContext.Session.GetString("IdUsaruiLogado");
+            List<Dashboard> lista = new Dashboard().RetornarGraficoPie(usuarioLogado);
             string valores = "";
             string labels = "";
             string cores = "";
